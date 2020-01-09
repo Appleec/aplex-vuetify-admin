@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <v-app-bar
     app
     color="primary"
@@ -20,26 +20,48 @@
         width="40"
       />
 
-      <!--        <v-img-->
-      <!--          alt="Vuetify Name"-->
-      <!--          class="shrink mt-1 hidden-sm-and-down"-->
-      <!--          contain-->
-      <!--          min-width="100"-->
-      <!--          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"-->
-      <!--          width="100"-->
-      <!--        />-->
+      <v-toolbar-title
+        style="width: 300px"
+        class="ml-0 pl-4"
+      >
+        <span class="hidden-sm-and-down">Appleex vuetify admin</span>
+      </v-toolbar-title>
     </div>
 
     <v-spacer></v-spacer>
-
-    <v-btn
-      href="https://github.com/vuetifyjs/vuetify/releases/latest"
-      target="_blank"
-      text
-    >
-      <span class="mr-2">Latest Release</span>
-      <v-icon>mdi-open-in-new</v-icon>
+    <v-btn icon>
+      <v-icon>mdi-apps</v-icon>
     </v-btn>
+    <v-btn icon>
+      <v-icon>mdi-bell</v-icon>
+    </v-btn>
+    <v-btn icon>
+      <v-icon>mdi-fullscreen</v-icon>
+    </v-btn>
+
+    <v-menu offset-y origin="center center" :nudge-bottom="10" transition="scale-transition">
+      <template v-slot:activator="{ on }">
+        <v-btn
+          dark
+          icon
+          v-on="on"
+        >
+          <v-avatar size="30px">
+            <img src="@/assets/images/avatar.png" alt="Appleex" />
+          </v-avatar>
+        </v-btn>
+      </template>
+
+      <v-list class="pa-0">
+        <v-list-item
+          v-for="(item, index) in items"
+          :key="index"
+          @click="() => {}"
+        >
+          <v-list-item-title>{{ item.text }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
   </v-app-bar>
 </template>
 
@@ -53,9 +75,25 @@ export default {
     }
   },
   data: () => ({
-    //
+    item: 1,
+    items: [
+      { text: 'profile', icon: 'mdi-clock', click: 'handleProfile' },
+      { text: 'settings', icon: 'mdi-account', click: 'handleSetting' },
+      { text: 'logout', icon: 'mdi-flag', click: 'handleLogout' }
+    ]
   }),
   computed: {
+  },
+  methods: {
+    // handle logout
+    handleLogout () {
+    },
+    // handle setting
+    handleSetting () {
+    },
+    // handle profile
+    handleProfile () {
+    }
   }
 }
 </script>
