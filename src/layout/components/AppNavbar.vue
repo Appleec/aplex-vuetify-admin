@@ -3,6 +3,7 @@
     app
     color="primary"
     dark
+    dense
     :clipped-left="true"
   >
     <v-app-bar-nav-icon
@@ -10,7 +11,7 @@
       @click.stop="$emit('toggleSidebar')"
     />
 
-    <div class="d-flex align-center">
+    <div class="d-flex">
       <v-img
         alt="Vuetify Logo"
         class="shrink mr-2"

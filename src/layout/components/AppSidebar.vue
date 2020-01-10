@@ -11,7 +11,7 @@
     mobile-break-point="400"
   >
     <!--占位符-->
-    <v-toolbar />
+    <v-toolbar dense />
 
     <v-list dense expand>
       <template v-for="item in items">
@@ -83,8 +83,7 @@ export default {
       { icon: 'mdi-home', text: 'Home' },
       {
         icon: 'mdi-settings',
-        text: 'Setting',
-        model: true,
+        text: 'Table',
         children: [
           { icon: '', text: 'set version' },
           { icon: '', text: 'set user' }
@@ -93,7 +92,6 @@ export default {
       {
         icon: 'mdi-settings',
         text: 'Setting',
-        model: true,
         children: [
           { icon: '', text: 'set version' },
           { icon: '', text: 'set user' }
