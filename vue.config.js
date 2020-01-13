@@ -51,22 +51,6 @@ module.exports = {
         pathRewrite: {
           '^/MOCK-API': ''
         }
-      },
-      '/FRONT-GATE-SERVER': {
-        // target: `http://127.0.0.1:${port}/mock`,
-        target: `http://192.168.150.32:16764`,
-        changeOrigin: true,
-        pathRewrite: {
-          // '^/FRONT-GATE-SERVER': ''
-          '^/mock': ''
-        }
-      },
-      '/LOCAL-API': {
-        target: `http://192.168.150.199:16767`,
-        changeOrigin: true,
-        pathRewrite: {
-          '^/LOCAL-API': ''
-        }
       }
     }
     // after: require('./mock/mock-server.js')
