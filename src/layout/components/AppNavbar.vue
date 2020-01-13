@@ -29,7 +29,7 @@
       </v-toolbar-title>
     </div>
 
-    <v-spacer></v-spacer>
+    <v-spacer />
     <v-btn icon>
       <v-icon>mdi-apps</v-icon>
     </v-btn>
@@ -48,7 +48,7 @@
           v-on="on"
         >
           <v-avatar size="30px">
-            <img src="@/assets/images/avatar.png" alt="Appleex" />
+            <img src="@/assets/images/avatar.png" alt="Appleex">
           </v-avatar>
         </v-btn>
       </template>
@@ -87,13 +87,13 @@ export default {
   },
   methods: {
     // handle logout
-    handleLogout () {
+    handleLogout() {
     },
     // handle setting
-    handleSetting () {
+    handleSetting() {
     },
     // handle profile
-    handleProfile () {
+    handleProfile() {
     }
   }
 }

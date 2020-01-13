@@ -3,7 +3,6 @@
     <v-container fluid>
       <v-slide-y-transition mode="out-in">
         <router-view :key="key" />
-<!--        sdflsdfjklsj-->
       </v-slide-y-transition>
     </v-container>
   </v-content>
@@ -13,7 +12,7 @@
 export default {
   name: 'AppMain',
   computed: {
-    key () {
+    key() {
       return this.$route.path
     }
   }

@@ -35,14 +35,14 @@
             >EDIT</a>
           </v-col>
         </v-row>
-        <v-list-group v-else-if="item.children" :prepend-icon="item.icon" :key="item.text" value="true">
+        <v-list-group v-else-if="item.children" :key="item.text" :prepend-icon="item.icon" value="true">
           <template v-slot:activator>
             <v-list-item-content>
               <v-list-item-title>{{ item.text }}</v-list-item-title>
             </v-list-item-content>
           </template>
 
-          <v-list-item v-for="(child, i) in item.children" :key="i" @click="() => {}" link>
+          <v-list-item v-for="(child, i) in item.children" :key="i" link @click="() => {}">
             <v-list-item-action>
               <v-icon>{{ child.icon }}</v-icon>
             </v-list-item-action>
@@ -100,13 +100,13 @@ export default {
     ]
   }),
   computed: {
-    routes () {
+    routes() {
       console.log(this.$router.options.routes)
       return this.$router.options.routes
     }
   },
   methods: {
-    toggleSidebar () {
+    toggleSidebar() {
       this.drawer = !this.drawer
     },
     genChildTarget(item, subItem) {
