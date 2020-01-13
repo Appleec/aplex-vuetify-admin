@@ -1,14 +1,14 @@
 <template>
-  <v-app class="app-wrapper">
+  <div class="app-wrapper">
     <!--header-->
-    <app-navbar :toggle-btn="true" @toggleSidebar="toggleSidebar" class="nav-container" />
+    <app-navbar :toggle-btn="true" class="nav-container" @toggleSidebar="toggleSidebar" />
 
     <!--sidebar-->
     <app-sidebar ref="sidebar" class="sidebar-container" />
 
     <!--main-->
     <app-main class="main-container" />
-  </v-app>
+  </div>
 </template>
 
 <script>
@@ -32,12 +32,9 @@ export default {
     }
   }),
   computed: {
-    key () {
+    key() {
       return this.$route.path
     }
-  },
-  mounted() {
-    console.log(this.$vuetify)
   },
   methods: {
     toggleSidebar() {

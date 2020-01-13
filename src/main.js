@@ -5,6 +5,10 @@ import store from './store'
 import './registerServiceWorker'
 import vuetify from './plugins/vuetify'
 
+import 'roboto-fontface/css/roboto/roboto-fontface.css'
+
+import '@/permission' // permission control
+
 Vue.config.productionTip = false
 
 new Vue({
