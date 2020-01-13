@@ -14,7 +14,7 @@
                 </div>
                 <v-form>
                   <v-text-field
-                    v-model="model.username"
+                    v-model="loginForm.username"
                     append-icon="mdi-account"
                     name="login"
                     label="Login"
@@ -22,7 +22,7 @@
                   />
                   <v-text-field
                     id="password"
-                    v-model="model.password"
+                    v-model="loginForm.password"
                     append-icon="mdi-lock"
                     name="password"
                     label="Password"
@@ -31,7 +31,7 @@
                 </v-form>
               </v-card-text>
               <div class="login-btn">
-                <v-btn block color="primary" :loading="loading" @click="login">Login</v-btn>
+                <v-btn block color="primary" :loading="loading" @click="handleLogin">Login</v-btn>
               </div>
             </v-card>
           </v-flex>
@@ -43,20 +43,32 @@
 
 <script>
 export default {
+  name: 'Login',
   data: () => ({
     loading: false,
-    model: {
-      username: 'admin@aplex.com',
+    loginForm: {
+      username: 'admin',
       password: '123456'
-    }
+    },
+    redirect: undefined
   }),
-
+  watch: {
+    $route: {
+      handler: function(route) {
+        this.redirect = route.query && route.query.redirect
+      },
+      immediate: true
+    }
+  },
   methods: {
-    login() {
+    handleLogin() {
       this.loading = true
-      setTimeout(() => {
-        this.$router.push('/dashboard')
-      }, 1000)
+      this.$store.dispatch('user/login', this.loginForm).then(() => {
+        this.$router.push({ path: this.redirect || '/' })
+        this.loading = false
+      }).catch(() => {
+        this.loading = false
+      })
     }
   }
 }
