@@ -12,26 +12,32 @@
                     Aplex Vuetify Admin
                   </h1>
                 </div>
-                <v-form>
+                <v-form ref="form" v-model="valid">
                   <v-text-field
-                    v-model="loginForm.username"
+                    v-model="formField.username"
+                    :rules="formRules.nameRules"
+                    :counter="10"
                     append-icon="mdi-account"
                     name="login"
                     label="Login"
                     type="text"
+                    required
                   />
                   <v-text-field
                     id="password"
-                    v-model="loginForm.password"
-                    append-icon="mdi-lock"
+                    v-model="formField.password"
+                    :rules="formRules.pwdRules"
+                    :append-icon="showPwd ? 'mdi-eye' : 'mdi-eye-off'"
                     name="password"
                     label="Password"
-                    type="password"
+                    :type="showPwd ? 'text' : 'password'"
+                    require
+                    @click:append="showPwd=!showPwd"
                   />
                 </v-form>
               </v-card-text>
               <div class="login-btn">
-                <v-btn block color="primary" :loading="loading" @click="handleLogin">Login</v-btn>
+                <v-btn :disabled="!valid" block color="primary" :loading="loading" @click="handleLogin">Login</v-btn>
               </div>
             </v-card>
           </v-flex>
@@ -46,9 +52,21 @@ export default {
   name: 'Login',
   data: () => ({
     loading: false,
-    loginForm: {
+    valid: true,
+    showPwd: false,
+    formField: {
       username: 'admin',
       password: '123456'
+    },
+    formRules: {
+      nameRules: [
+        v => !!v || 'Name is required',
+        v => (v && v.length <= 10) || 'Name must be less than 10 characters'
+      ],
+      pwdRules: [
+        v => !!v || 'Password is required'
+        // v => /.+@.+\..+/.test(v) || 'Password must be valid'
+      ]
     },
     redirect: undefined
   }),
@@ -61,14 +79,30 @@ export default {
     }
   },
   methods: {
+    // login
     handleLogin() {
-      this.loading = true
-      this.$store.dispatch('user/login', this.loginForm).then(() => {
-        this.$router.push({ path: this.redirect || '/' })
-        this.loading = false
-      }).catch(() => {
-        this.loading = false
-      })
+      if (this.$refs.form.validate()) {
+        this.loading = true
+        this.$store.dispatch('user/login', this.formField).then(() => {
+          this.$router.push({ path: this.redirect || '/' })
+          // this.$message({
+          //   type: 'success',
+          //   color: '#4CAF50',
+          //   timeout: 3000,
+          //   y: 'bottom',
+          //   text: 'Operation is success'
+          // })
+          this.loading = false
+        }).catch(() => {
+          this.loading = false
+          this.$message({
+            type: 'error',
+            color: '#FF5252',
+            timeout: 2000,
+            text: 'Operation is failed'
+          })
+        })
+      }
     }
   }
 }

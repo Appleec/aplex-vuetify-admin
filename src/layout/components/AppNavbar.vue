@@ -20,14 +20,13 @@
         transition="scale-transition"
         width="40"
       />
-
-      <v-toolbar-title
-        style="width: 300px"
-        class="ml-0 pl-4"
-      >
-        <span class="hidden-sm-and-down">Appleex vuetify admin</span>
-      </v-toolbar-title>
     </div>
+    <v-toolbar-title
+      style="width: 300px"
+      class="ml-0 pl-4"
+    >
+      <span class="hidden-sm-and-down">Aplex vuetify admin</span>
+    </v-toolbar-title>
 
     <v-spacer />
     <v-btn icon>
@@ -36,7 +35,7 @@
     <v-btn icon>
       <v-icon>mdi-bell</v-icon>
     </v-btn>
-    <v-btn icon>
+    <v-btn class="hidden-sm-and-down" icon>
       <v-icon>mdi-fullscreen</v-icon>
     </v-btn>
 
@@ -57,7 +56,7 @@
         <v-list-item
           v-for="(item, index) in items"
           :key="index"
-          @click="() => {}"
+          @click="item.click"
         >
           <v-list-item-title>{{ item.text }}</v-list-item-title>
         </v-list-item>
@@ -75,19 +74,22 @@ export default {
       default: false
     }
   },
-  data: () => ({
-    item: 1,
-    items: [
-      { text: 'profile', icon: 'mdi-clock', click: 'handleProfile' },
-      { text: 'settings', icon: 'mdi-account', click: 'handleSetting' },
-      { text: 'logout', icon: 'mdi-flag', click: 'handleLogout' }
-    ]
-  }),
+  data() {
+    return ({
+      items: [
+        { text: 'profile', icon: 'mdi-clock', click: this.handleProfile },
+        { text: 'settings', icon: 'mdi-account', click: this.handleSetting },
+        { text: 'logout', icon: 'mdi-flag', click: this.handleLogout }
+      ]
+    })
+  },
   computed: {
   },
   methods: {
     // handle logout
-    handleLogout() {
+    async handleLogout() {
+      await this.$store.dispatch('user/logout')
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     },
     // handle setting
     handleSetting() {
@@ -98,25 +100,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.app-main {
-  /*50 = navbar  */
-  /*min-height: calc(100vh - 50px);*/
-  /*width: 100%;*/
-  /*position: relative;*/
-  /*overflow: hidden;*/
-}
-.fixed-header+.app-main {
-  /*padding-top: 50px;*/
-}
-</style>
-
-<style lang="scss">
-// fix css style bug in open el-dialog
-/*.el-popup-parent--hidden {*/
-/*  .fixed-header {*/
-/*    padding-right: 15px;*/
-/*  }*/
-/*}*/
-</style>

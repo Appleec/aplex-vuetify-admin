@@ -31,7 +31,7 @@ const constantRoutes = [
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue'),
-        meta: { title: 'dashboard', icon: 'home' }
+        meta: { title: 'Dashboard', icon: 'mdi-home' }
       }
     ]
   }
