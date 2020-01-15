@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
 
+import 'vuetify/dist/vuetify.min.css'
 import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
 
 import Snackbar from '../components/snackbar/index' // Snackbar to replace message
@@ -21,5 +22,6 @@ export default new Vuetify({
         success: '#4CAF50'
       }
     }
-  }
+  },
+  customProperties: true
 })
