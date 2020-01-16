@@ -9,6 +9,8 @@ import 'roboto-fontface/css/roboto/roboto-fontface.css'
 
 import '@/permission' // permission control
 
+import * as filters from './filters' // global filters
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
@@ -21,6 +23,11 @@ import { mockXHR } from '../mock'
 if (process.env.NODE_ENV === 'development') {
   mockXHR()
 }
+
+// register global utility filters
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
 
 Vue.config.productionTip = false
 
