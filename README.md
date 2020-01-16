@@ -1,4 +1,8 @@
-# vuetify-admin
+# Aplex vuetify admin
+
+English | [简体中文](./README-zh.md)
+
+>Vue Material Admin Template is a Vue Based Material Design Admin Template. And use Vuetifyjs as base framework.
 
 ## Project setup
 ```
