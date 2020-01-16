@@ -1,22 +1,31 @@
 <template>
-  <div class="Page404">
-    <v-content fluid fill-height>
-      <v-layout align-center justify-center row>
-        <v-flex text-xs-center>
-<!--          <div class="mr-3 hidden-sm-and-down">-->
-<!--            <img class="pic-404__parent" src="@/assets/images/404.png" alt="404">-->
-<!--          </div>-->
-          <div class="display-3">
-            <h1>500</h1>
-            <h2 class="my-3 headline ">Sorry, the server is down.</h2>
-            <div>
-              <v-btn rounded color="primary" to="/">Go Home</v-btn>
+  <v-content fluid fill-height class="page-404">
+    <v-container>
+      <v-row justify="center">
+        <v-col cols="auto" sm="6">
+          <v-img src="@/assets/images/404.png" alt="Aplex Admin" />
+        </v-col>
+
+        <v-col
+          cols="auto"
+          sm="6"
+          class="text-center text-md-left text-sm-left"
+          align-self="center"
+        >
+          <div class="bullshit">
+            <div class="bullshit__oops">
+              OOPS!
             </div>
+            <div class="bullshit__headline">{{ message }}</div>
+            <div class="bullshit__info text-left grey--text">Please check that the URL you entered is correct, or click the button below to return to the homepage.</div>
+            <v-btn rounded color="primary" to="/">
+              Back to home
+            </v-btn>
           </div>
-        </v-flex>
-      </v-layout>
-    </v-content>
-  </div>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-content>
 </template>
 
 <script>
@@ -32,5 +41,55 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .page-404{
+    background-color: #ffffff;
+  }
+  .bullshit {
+    position: relative;
+    overflow: hidden;
+    &__oops {
+      font-size: 32px;
+      font-weight: bold;
+      line-height: 40px;
+      color: #1482f0;
+      opacity: 0;
+      margin-bottom: 20px;
+      animation-name: slideUp;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+    }
+    &__headline {
+      font-size: 20px;
+      line-height: 24px;
+      color: #222;
+      font-weight: bold;
+      opacity: 0;
+      margin-bottom: 10px;
+      animation-name: slideUp;
+      animation-duration: 0.5s;
+      animation-delay: 0.1s;
+      animation-fill-mode: forwards;
+    }
+    &__info {
+      font-size: 13px;
+      line-height: 21px;
+      color: grey;
+      opacity: 0;
+      margin-bottom: 30px;
+      animation-name: slideUp;
+      animation-duration: 0.5s;
+      animation-delay: 0.2s;
+      animation-fill-mode: forwards;
+    }
+    @keyframes slideUp {
+      0% {
+        transform: translateY(60px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
 </style>
