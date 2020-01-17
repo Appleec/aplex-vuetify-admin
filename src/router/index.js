@@ -77,6 +77,12 @@ const constantRoutes = [
         meta: { title: 'Table', icon: '' }
       },
       {
+        path: 'excel',
+        name: 'Excel',
+        component: () => import(/* webpackChunkName: "excel" */ '@/views/example/excel/index'),
+        meta: { title: 'Excel', icon: '' }
+      },
+      {
         path: 'tree',
         name: 'Tree',
         component: () => import(/* webpackChunkName: "tree" */ '@/views/example/tree/index'),
