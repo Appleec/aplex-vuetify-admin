@@ -60,4 +60,4 @@ Modern browsers and Internet Explorer 10+.
 
 [MIT](https://github.com/Appleec/aplex-vuetify-admin/blob/master/LICENSE) license.
 
-Copyright (c) 2020-present appleex
+Copyright (c) 2020 Appleex

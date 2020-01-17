@@ -56,8 +56,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 | --------- | --------- | --------- | --------- |
 | IE10, IE11, Edge| last 2 versions| last 2 versions| last 2 versions
 
-## 凭证
+## 许可证
 
 [MIT](https://github.com/Appleec/aplex-vuetify-admin/blob/master/LICENSE) license.
 
-Copyright (c) 2020-present appleex
+Copyright (c) 2020 Appleex
