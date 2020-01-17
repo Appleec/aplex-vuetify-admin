@@ -36,13 +36,13 @@ import Layout from '@/layout'
 const constantRoutes = [
   {
     path: '/login',
-    component: () => import('@/views/login/index'),
+    component: () => import(/* webpackChunkName: "login" */ '@/views/login/index'),
     hidden: true
   },
 
   {
     path: '/404',
-    component: () => import('@/views/errorPage/404'),
+    component: () => import(/* webpackChunkName: "error" */ '@/views/errorPage/404'),
     hidden: true
   },
 
@@ -73,13 +73,13 @@ const constantRoutes = [
       {
         path: 'table',
         name: 'Table',
-        component: () => import('@/views/example/table/index'),
+        component: () => import(/* webpackChunkName: "table" */ '@/views/example/table/index'),
         meta: { title: 'Table', icon: '' }
       },
       {
         path: 'tree',
         name: 'Tree',
-        component: () => import('@/views/example/tree/index'),
+        component: () => import(/* webpackChunkName: "tree" */ '@/views/example/tree/index'),
         meta: { title: 'Tree', icon: '' }
       }
     ]

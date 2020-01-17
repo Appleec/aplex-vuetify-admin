@@ -7,11 +7,9 @@ import vuetify from './plugins/vuetify'
 
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 
-// permission control
-import '@/permission'
+import '@/permission' // permission control
 
-// global filters
-import * as filters from './filters'
+import * as filters from './filters' // global filters
 
 /**
  * If you don't want to use mock-server
