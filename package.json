@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "dev": "vue-cli-service serve",
+    "build:prod": "vue-cli-service build",
+    "build:stage": "vue-cli-service build --mode staging",
+    "preview": "node build/index.js --preview",
+    "lint": "eslint --ext .js,.vue src",
+    "test:unit": "jest --clearCache && vue-cli-service test:unit",
+    "test:ci": "npm run lint && npm run test:unit"
   },
   "dependencies": {
     "axios": "^0.19.1",
@@ -33,10 +36,13 @@
     "@vue/eslint-config-standard": "^4.0.0",
     "@vue/test-utils": "^1.0.0-beta.30",
     "babel-eslint": "^10.0.3",
+    "chalk": "^3.0.0",
+    "connect": "^3.7.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "mockjs": "^1.1.0",
     "node-sass": "^4.12.0",
+    "runjs": "^4.4.2",
     "sass": "^1.19.0",
     "sass-loader": "^8.0.0",
     "script-ext-html-webpack-plugin": "^2.1.4",
@@ -51,7 +57,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitee.com:Appleex/vuetify-admin.git"
+    "url": "git+ssh://git@github.com/Appleec/aplex-vuetify-admin.git"
   },
   "keywords": [
     "vue",
@@ -63,5 +69,9 @@
     "appleex"
   ],
   "author": "appleex <771992522@qq.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Appleec/aplex-vuetify-admin/issues"
+  },
+  "homepage": "https://github.com/Appleec/aplex-vuetify-admin#readme"
 }
