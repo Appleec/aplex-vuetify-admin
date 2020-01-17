@@ -1,3 +1,6 @@
+/**
+ * Created by appleex on 2020/1/17.
+ */
 import request from '@/utils/request'
 
 export function login(data) {

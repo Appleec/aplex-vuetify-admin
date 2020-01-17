@@ -1,6 +1,6 @@
 // vconsole
-import Vconsole from 'vconsole';
+import Vconsole from 'vconsole'
 
-const vConsole = new Vconsole();
+const vConsole = new Vconsole()
 
-export default vConsole;
+export default vConsole

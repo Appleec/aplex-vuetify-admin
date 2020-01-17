@@ -1,3 +1,6 @@
+/**
+ * Created by Appleex on 2020/1/16.
+ */
 import Vue from 'vue'
 import Router from 'vue-router'
 
